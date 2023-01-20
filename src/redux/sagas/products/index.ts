@@ -22,7 +22,7 @@ function* getProducts(): Generator<any> {
       getProductRequest(),
     )) as Product[];
     const totalPoints = response
-      .reduce((acc, prod) => acc + prod.points, 0)
+      .reduce((acc, prod) => acc + (prod.is_redemption ? prod.points : 0), 0)
       .toFixed(2)
       .replace(/\d(?=(\d{3})+\.)/g, '$&,');
     yield put(

@@ -9,7 +9,6 @@ import {Product} from '@models/products';
 
 export const ProductDetailScreen = ({route}: {route: any}) => {
   const product: Product = route.params?.product;
-  console.log('prod', product);
   const navigation = useNavigation();
 
   return (
