@@ -1,14 +1,27 @@
 import * as React from 'react';
-
 import {View, Text, Image, TouchableOpacity} from 'react-native';
 import {DateTime} from 'luxon';
+import {useNavigation} from '@react-navigation/native';
+
 import {styles} from './styles';
 import {CrossShape} from '@components/Shapes/Cross';
 import {Product} from '@models/products';
 
+import {Routes} from '@navigation/routes';
+
 export const MovementsItem = ({product}: {product: Product}) => {
+  const navigation = useNavigation();
   return (
-    <TouchableOpacity style={styles.container}>
+    <TouchableOpacity
+      onPress={() =>
+        navigation.navigate(
+          Routes.ProductDetail as never,
+          {
+            product: product,
+          } as never,
+        )
+      }
+      style={styles.container}>
       <Image
         style={styles.tinyLogo}
         source={{

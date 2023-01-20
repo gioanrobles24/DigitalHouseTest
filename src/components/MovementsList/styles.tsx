@@ -4,10 +4,12 @@ import {percentageToDP} from '@utils/screen';
 
 export const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    height: percentageToDP('85%'),
+    maxHeight: percentageToDP('85%'),
     backgroundColor: Colors.white,
     paddingHorizontal: 10,
-    paddingVertical: 23,
+    paddingVertical: 10,
+    borderRadius: 10,
   },
   welcomeContainer: {
     flexDirection: 'row',
