@@ -76,4 +76,13 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  defaultButton: {
+    width: '90%',
+    alignSelf: 'center',
+    height: percentageToDP('13%'),
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 10,
+    backgroundColor: Colors.primary,
+  },
 });

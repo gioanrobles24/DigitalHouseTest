@@ -5,7 +5,8 @@ const initialState: ProductsState = {
   pending: false,
   products: [],
   error: null,
-  totalPoints: 0,
+  totalPoints: '0',
+  defaultProducts: [],
 };
 
 export default (state = initialState, action: ProductsActions) => {
@@ -37,7 +38,8 @@ export default (state = initialState, action: ProductsActions) => {
         ...state,
         pending: false,
         products: action.payload.products,
-        totalPoints: action.payload.total_points,
+        totalPoints: action.payload.totalPoints,
+        defaultProducts: action.payload.products,
       };
     case Products.GET_PRODUCTS_FAILURE:
       return {

@@ -5,6 +5,7 @@ import {
   FilterProductsRequest,
   FilterProductsSuccess,
   FilterProductsSuccessPayload,
+  filterTypes,
   GetProductsFailure,
   GetProductsFailurePayload,
   GetProductsRequest,
@@ -30,8 +31,11 @@ export const getProductsFailure = (
   payload,
 });
 
-export const filterProductsRequest = (): FilterProductsRequest => ({
+export const filterProductsRequest = (
+  filterType: filterTypes,
+): FilterProductsRequest => ({
   type: Products.FILTER_PRODUCTS,
+  filterType,
 });
 
 export const filterProductsSuccess = (

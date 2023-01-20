@@ -5,18 +5,35 @@ import {useDispatch, useSelector} from 'react-redux';
 import {CustomButton} from '@components/Button';
 import {MovementsList} from '@components/MovementsList';
 import {styles} from './styles';
-import {getLoading, getTotalPoints} from '@store/selectors/productsSelectors';
-import {getProductsRequest} from '@store/actions/products/productAction';
+import {
+  getErrorMessage,
+  getLoading,
+  getTotalPoints,
+} from '@store/selectors/productsSelectors';
+import {
+  filterProductsRequest,
+  getProductsRequest,
+} from '@store/actions/products/productAction';
 import {Colors} from '@constants/colors';
+import {filterTypes} from '@store/types/products';
 
 export const HomeScreen = () => {
   const pending = useSelector(getLoading);
+  const productsError = useSelector(getErrorMessage);
   const totalPoints = useSelector(getTotalPoints);
+
+  const [filtered, setFiltered] = React.useState(false);
+
   const dispatch = useDispatch();
 
   React.useEffect(() => {
     dispatch(getProductsRequest());
   }, [dispatch]);
+
+  const filterProductsHandler = (filterType: filterTypes) => {
+    setFiltered(!filtered);
+    dispatch(filterProductsRequest(filterType));
+  };
 
   return (
     <View style={styles.container}>
@@ -42,14 +59,38 @@ export const HomeScreen = () => {
         <View style={styles.loadingContainer}>
           <ActivityIndicator size="large" color={Colors.primary} />
         </View>
-      ) : (
+      ) : !productsError ? (
         <View style={styles.MovementsContainer}>
           <MovementsList />
         </View>
+      ) : (
+        <View style={styles.loadingContainer}>
+          <Text style={styles.welcomeText}>
+            Algo ocurrio por favor intenta de nuevo!
+          </Text>
+        </View>
       )}
-      <View style={styles.buttonsContainer}>
-        <CustomButton style={styles.buttonPrimary} text={'Ganados'} />
-        <CustomButton style={styles.buttonPrimary} text={'Canjeados'} />
+      <View>
+        {filtered ? (
+          <CustomButton
+            onPressAction={() => filterProductsHandler(filterTypes.default)}
+            style={styles.defaultButton}
+            text={'Todos'}
+          />
+        ) : (
+          <View style={styles.buttonsContainer}>
+            <CustomButton
+              onPressAction={() => filterProductsHandler(filterTypes.wined)}
+              style={styles.buttonPrimary}
+              text={'Ganados'}
+            />
+            <CustomButton
+              onPressAction={() => filterProductsHandler(filterTypes.redeemed)}
+              style={styles.buttonPrimary}
+              text={'Canjeados'}
+            />
+          </View>
+        )}
       </View>
     </View>
   );

@@ -1,11 +1,18 @@
 import {Product} from '@models/products';
 import Products from '@store/actionTypes';
 
+export const enum filterTypes {
+  redeemed = 'redeemed',
+  wined = 'wined',
+  default = 'default',
+}
+
 export interface ProductsState {
   pending: boolean;
   products: Product[];
   error: string | null;
-  totalPoints: number;
+  totalPoints: string;
+  defaultProducts: Product[];
 }
 
 export interface GetProductsRequest {
@@ -14,11 +21,12 @@ export interface GetProductsRequest {
 
 export interface FilterProductsRequest {
   type: Products.FILTER_PRODUCTS;
+  filterType: filterTypes;
 }
 
 export interface GetProductsSuccessPayload {
   products: Product[];
-  total_points: string;
+  totalPoints: string;
 }
 
 export interface GetProductsFailurePayload {

@@ -1,10 +1,14 @@
+import {takeLatest, all, call, put, select} from 'redux-saga/effects';
 import {Product} from '@models/products';
 import {
+  filterProductsFailure,
+  filterProductsSuccess,
   getProductsFailure,
   getProductsSuccess,
 } from '@store/actions/products/productAction';
 import Products from '@store/actionTypes';
-import {takeLatest, all, call, put} from 'redux-saga/effects';
+import {FilterProductsRequest, filterTypes} from '@store/types/products';
+import {getDefaultProducts} from '@store/selectors/productsSelectors';
 
 const getProductRequest = async () => {
   const response = fetch(
@@ -28,7 +32,7 @@ function* getProducts(): Generator<any> {
     yield put(
       getProductsSuccess({
         products: response,
-        total_points: totalPoints,
+        totalPoints: totalPoints,
       }),
     );
   } catch (error: any) {
@@ -40,10 +44,25 @@ function* getProducts(): Generator<any> {
   }
 }
 
-function* filterProducts(): Generator<any> {
+function* filterProducts(action: FilterProductsRequest): Generator<any> {
   try {
-    console.log('action');
-  } catch (error: any) {}
+    const productsDefault = (yield select(getDefaultProducts)) as Product[];
+    if (action.filterType === filterTypes.redeemed) {
+      const filtered = productsDefault.filter(
+        product => product.is_redemption !== false,
+      );
+      yield put(filterProductsSuccess({products: filtered}));
+    } else if (action.filterType === filterTypes.wined) {
+      const filtered = productsDefault.filter(
+        product => product.is_redemption !== true,
+      );
+      yield put(filterProductsSuccess({products: filtered}));
+    } else {
+      yield put(filterProductsSuccess({products: productsDefault}));
+    }
+  } catch (error: any) {
+    yield put(filterProductsFailure({error: error.message}));
+  }
 }
 
 function* ProductsSaga() {
