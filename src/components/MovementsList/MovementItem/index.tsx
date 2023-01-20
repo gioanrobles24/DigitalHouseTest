@@ -24,6 +24,7 @@ export const MovementsItem = ({product}: {product: Product}) => {
       style={styles.container}>
       <Image
         style={styles.tinyLogo}
+        resizeMode="cover"
         source={{
           uri: product.image,
         }}

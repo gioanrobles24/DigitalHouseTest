@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {View, Text, Image} from 'react-native';
+import {View, Text, Image, ScrollView} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {DateTime} from 'luxon';
 
@@ -12,7 +12,7 @@ export const ProductDetailScreen = ({route}: {route: any}) => {
   const navigation = useNavigation();
 
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <View style={styles.welcomeContainer}>
         <Text style={styles.welcomeText}>Bienvenido de vuelta!</Text>
       </View>
@@ -41,6 +41,6 @@ export const ProductDetailScreen = ({route}: {route: any}) => {
           />
         </View>
       </View>
-    </View>
+    </ScrollView>
   );
 };

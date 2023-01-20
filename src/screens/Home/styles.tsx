@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native';
+import {Platform, StyleSheet} from 'react-native';
 import {Colors} from '@constants/colors';
 import {percentageToDP} from '@utils/screen';
 
@@ -7,7 +7,7 @@ export const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: Colors.backgroundPrimary,
     paddingHorizontal: 20,
-    paddingVertical: '12%',
+    paddingVertical: Platform.OS === 'android' ? '2%' : '12%',
   },
   welcomeContainer: {
     flexDirection: 'row',
@@ -59,7 +59,8 @@ export const styles = StyleSheet.create({
   MovementsContainer: {
     flex: 1,
   },
-  buttonsContainer: {
+  buttonsContainer: {},
+  filterButtons: {
     flexDirection: 'row',
     justifyContent: 'space-between',
   },

@@ -70,7 +70,7 @@ export const HomeScreen = () => {
           </Text>
         </View>
       )}
-      <View>
+      <View style={styles.buttonsContainer}>
         {filtered ? (
           <CustomButton
             onPressAction={() => filterProductsHandler(filterTypes.default)}
@@ -78,7 +78,7 @@ export const HomeScreen = () => {
             text={'Todos'}
           />
         ) : (
-          <View style={styles.buttonsContainer}>
+          <View style={styles.filterButtons}>
             <CustomButton
               onPressAction={() => filterProductsHandler(filterTypes.wined)}
               style={styles.buttonPrimary}

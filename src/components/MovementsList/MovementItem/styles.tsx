@@ -7,7 +7,7 @@ export const styles = StyleSheet.create({
     marginTop: 13,
   },
   tinyLogo: {
-    width: '18%',
+    width: '20%',
     height: '100%',
     borderRadius: 10,
   },
