@@ -8,4 +8,6 @@
   
   
   ### here some pics
-    <img src="home.png" alt="React Native is released under the MIT license." />
+   
+![home](https://user-images.githubusercontent.com/38007893/213774758-4c23834f-744b-468a-b6f1-ea002dd95765.png)
+![prod_detail](https://user-images.githubusercontent.com/38007893/213774795-b189246d-84d1-42f2-9c79-fedf45ac64c7.png)
