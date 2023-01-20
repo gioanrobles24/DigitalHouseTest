@@ -1,6 +1,11 @@
 # DigitalHouseTest
 
-  ## mobile app for the Digital house technical test. 
+  ## Mobile app for the Digital house technical test. 
+  
+   #### Using : 
+      - Redux, redux-saga ( for scalability) 
+      - Typescript
+      - and inserting filters   
   
   ### Installing
     -   Install dependencies with `npm install`
