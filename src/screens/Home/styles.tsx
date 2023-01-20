@@ -1,13 +1,13 @@
 import {StyleSheet} from 'react-native';
 import {Colors} from '@constants/colors';
-import { percentageToDP } from '@utils/screen';
+import {percentageToDP} from '@utils/screen';
 
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: Colors.backgroundPrimary,
     paddingHorizontal: 20,
-    paddingVertical: 27,
+    paddingVertical: '12%',
   },
   welcomeContainer: {
     flexDirection: 'row',
@@ -47,13 +47,33 @@ export const styles = StyleSheet.create({
     fontSize: 16,
     color: Colors.white,
     marginHorizontal: 19,
-    marginVertical: 20
+    marginVertical: 20,
   },
   userPoints: {
     color: Colors.white,
     fontWeight: '800',
     fontSize: 32,
     lineHeight: 43,
-    alignSelf: 'center'
+    alignSelf: 'center',
+  },
+  MovementsContainer: {
+    flex: 1,
+  },
+  buttonsContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  buttonPrimary: {
+    backgroundColor: Colors.primary,
+    width: percentageToDP('43%'),
+    height: percentageToDP('13%'),
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 10,
+  },
+  loadingContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });

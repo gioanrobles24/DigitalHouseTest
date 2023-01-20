@@ -1,5 +1,5 @@
 import React from 'react';
-import {SafeAreaView, useColorScheme} from 'react-native';
+import {useColorScheme, View} from 'react-native';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 import {NavigationContainer} from '@react-navigation/native';
 import {MainStack} from '@navigation/mainStack';
@@ -14,9 +14,9 @@ function App(): JSX.Element {
 
   return (
     <NavigationContainer>
-      <SafeAreaView style={backgroundStyle}>
+      <View style={backgroundStyle}>
         <MainStack />
-      </SafeAreaView>
+      </View>
     </NavigationContainer>
   );
 }
